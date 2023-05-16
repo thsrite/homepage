@@ -294,19 +294,19 @@ function Home({ initialSettings }) {
           </div>
         )}
 
-        {bookmarks?.length > 0 && (
-          <div className={`grow flex flex-wrap pt-0 p-4 sm:p-8 gap-2 grid-cols-1 lg:grid-cols-2 lg:grid-cols-${Math.min(6, bookmarks.length)}`}>
-            {bookmarks.map((group) => (
-              <BookmarksGroup key={group.name} group={group} />
-            ))}
-          </div>
-        )}
+        {/*{bookmarks?.length > 0 && (*/}
+        {/*  <div className={`grow flex flex-wrap pt-0 p-4 sm:p-8 gap-2 grid-cols-1 lg:grid-cols-2 lg:grid-cols-${Math.min(6, bookmarks.length)}`}>*/}
+        {/*    {bookmarks.map((group) => (*/}
+        {/*      <BookmarksGroup key={group.name} group={group} />*/}
+        {/*    ))}*/}
+        {/*  </div>*/}
+        {/*)}*/}
 
-        <div className="flex p-8 pb-0 w-full justify-end">
-          {!initialSettings?.color && <ColorToggle />}
-          <Revalidate />
-          {!initialSettings?.theme && <ThemeToggle />}
-        </div>
+        {/*<div className="flex p-8 pb-0 w-full justify-end">*/}
+        {/*  {!initialSettings?.color && <ColorToggle />}*/}
+        {/*  <Revalidate />*/}
+        {/*  {!initialSettings?.theme && <ThemeToggle />}*/}
+        {/*</div>*/}
 
         <div className="flex p-8 pt-4 w-full justify-end">
           {!initialSettings?.hideVersion && <Version />}
@@ -357,7 +357,7 @@ export default function Wrapper({ initialSettings, fallback }) {
         style={wrappedStyle}
       >
         <div
-        id="inner_wrapper" 
+        id="inner_wrapper"
         className={classNames(
           backgroundBlur && `backdrop-blur${initialSettings.background.blur.length ? '-' : ""}${initialSettings.background.blur}`,
           backgroundSaturate && `backdrop-saturate-${initialSettings.background.saturate}`,
