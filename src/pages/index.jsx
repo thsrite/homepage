@@ -1,7 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import useSWR, { SWRConfig } from "swr";
 import Head from "next/head";
-import dynamic from "next/dynamic";
 import classNames from "classnames";
 import { useTranslation } from "next-i18next";
 import { useEffect, useContext, useState } from "react";
@@ -9,9 +8,7 @@ import { BiError } from "react-icons/bi";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import ServicesGroup from "components/services/group";
-import BookmarksGroup from "components/bookmarks/group";
 import Widget from "components/widgets/widget";
-import Revalidate from "components/toggles/revalidate";
 import createLogger from "utils/logger";
 import useWindowFocus from "utils/hooks/window-focus";
 import { getSettings } from "utils/config/config";
@@ -24,17 +21,6 @@ import themes from "utils/styles/themes";
 import QuickLaunch from "components/quicklaunch";
 import { getStoredProvider, searchProviders } from "components/widgets/search/search";
 
-const ThemeToggle = dynamic(() => import("components/toggles/theme"), {
-  ssr: false,
-});
-
-const ColorToggle = dynamic(() => import("components/toggles/color"), {
-  ssr: false,
-});
-
-const Version = dynamic(() => import("components/version"), {
-  ssr: false,
-});
 
 const rightAlignedWidgets = ["weatherapi", "openweathermap", "weather", "openmeteo", "search", "datetime"];
 
@@ -294,23 +280,6 @@ function Home({ initialSettings }) {
           </div>
         )}
 
-        {/*{bookmarks?.length > 0 && (*/}
-        {/*  <div className={`grow flex flex-wrap pt-0 p-4 sm:p-8 gap-2 grid-cols-1 lg:grid-cols-2 lg:grid-cols-${Math.min(6, bookmarks.length)}`}>*/}
-        {/*    {bookmarks.map((group) => (*/}
-        {/*      <BookmarksGroup key={group.name} group={group} />*/}
-        {/*    ))}*/}
-        {/*  </div>*/}
-        {/*)}*/}
-
-        {/*<div className="flex p-8 pb-0 w-full justify-end">*/}
-        {/*  {!initialSettings?.color && <ColorToggle />}*/}
-        {/*  <Revalidate />*/}
-        {/*  {!initialSettings?.theme && <ThemeToggle />}*/}
-        {/*</div>*/}
-
-        <div className="flex p-8 pt-4 w-full justify-end">
-          {!initialSettings?.hideVersion && <Version />}
-        </div>
       </div>
     </>
   );
